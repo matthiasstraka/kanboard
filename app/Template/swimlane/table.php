@@ -1,6 +1,6 @@
 <table
     class="swimlanes-table table-striped table-scrolling"
-    data-save-position-url="<?= $this->url->href('SwimlaneController', 'move', array('project_id' => $project['id'])) ?>">
+    data-save-position-url="<?= $this->url->href('SwimlaneController', 'move', array('project_id' => $project['id'], 'csrf_token' => $this->app->getToken()->getReusableCSRFToken())) ?>">
     <thead>
         <tr>
             <th><?= t('Name') ?></th>
@@ -14,7 +14,7 @@
         <tr data-swimlane-id="<?= $swimlane['id'] ?>">
             <td>
                 <?php if (! isset($disable_handle)): ?>
-                    <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change column position') ?>"></i>&nbsp;
+                    <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change column position') ?>" role="button" aria-label="<?= t('Change column position') ?>"></i>&nbsp;
                 <?php endif ?>
 
                 <div class="dropdown">

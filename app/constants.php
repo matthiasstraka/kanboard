@@ -81,6 +81,7 @@ defined('LDAP_USER_ATTRIBUTE_GROUPS') or define('LDAP_USER_ATTRIBUTE_GROUPS', ge
 defined('LDAP_USER_ATTRIBUTE_PHOTO') or define('LDAP_USER_ATTRIBUTE_PHOTO', getenv('LDAP_USER_ATTRIBUTE_PHOTO') ?: '');
 defined('LDAP_USER_ATTRIBUTE_LANGUAGE') or define('LDAP_USER_ATTRIBUTE_LANGUAGE', getenv('LDAP_USER_ATTRIBUTE_LANGUAGE') ?: '');
 defined('LDAP_USER_CREATION') or define('LDAP_USER_CREATION', getenv('LDAP_USER_CREATION') ? strtolower(getenv('LDAP_USER_CREATION')) === 'true' : true);
+defined('LDAP_USER_DEFAULT_ROLE_MANAGER') or define('LDAP_USER_DEFAULT_ROLE_MANAGER', getenv('LDAP_USER_DEFAULT_ROLE_MANAGER') ? strtolower(getenv('LDAP_USER_DEFAULT_ROLE_MANAGER')) === 'true' : false);
 
 defined('LDAP_GROUP_ADMIN_DN') or define('LDAP_GROUP_ADMIN_DN', getenv('LDAP_GROUP_ADMIN_DN') ?: '');
 defined('LDAP_GROUP_MANAGER_DN') or define('LDAP_GROUP_MANAGER_DN', getenv('LDAP_GROUP_MANAGER_DN') ?: '');
@@ -95,8 +96,8 @@ defined('LDAP_GROUP_ATTRIBUTE_NAME') or define('LDAP_GROUP_ATTRIBUTE_NAME', gete
 // Proxy authentication
 defined('REVERSE_PROXY_AUTH') or define('REVERSE_PROXY_AUTH', strtolower(getenv('REVERSE_PROXY_AUTH')) === 'true');
 defined('REVERSE_PROXY_USER_HEADER') or define('REVERSE_PROXY_USER_HEADER', getenv('REVERSE_PROXY_USER_HEADER') ?: 'REMOTE_USER');
-defined('REVERSE_PROXY_DEFAULT_ADMIN') or define('REVERSE_PROXY_DEFAULT_ADMIN', getenv('REVERSE_PROXY_DEFAULT_ADMIN') ?: '');
 defined('REVERSE_PROXY_EMAIL_HEADER') or define('REVERSE_PROXY_EMAIL_HEADER', getenv('REVERSE_PROXY_EMAIL_HEADER') ?: 'REMOTE_EMAIL');
+defined('REVERSE_PROXY_DEFAULT_ADMIN') or define('REVERSE_PROXY_DEFAULT_ADMIN', getenv('REVERSE_PROXY_DEFAULT_ADMIN') ?: '');
 defined('REVERSE_PROXY_DEFAULT_DOMAIN') or define('REVERSE_PROXY_DEFAULT_DOMAIN', getenv('REVERSE_PROXY_DEFAULT_DOMAIN') ?: '');
 
 // Remember me authentication
@@ -105,6 +106,7 @@ defined('REMEMBER_ME_AUTH') or define('REMEMBER_ME_AUTH', getenv('REMEMBER_ME_AU
 // Mail configuration
 defined('MAIL_CONFIGURATION') or define('MAIL_CONFIGURATION', getenv('MAIL_CONFIGURATION') ? strtolower(getenv('MAIL_CONFIGURATION')) === 'true' : true);
 defined('MAIL_FROM') or define('MAIL_FROM', getenv('MAIL_FROM') ?: 'notifications@kanboard.local');
+defined('MAIL_BCC') or define('MAIL_BCC', getenv('MAIL_BCC') ?: '');
 defined('MAIL_TRANSPORT') or define('MAIL_TRANSPORT', getenv('MAIL_TRANSPORT') ?: 'mail');
 defined('MAIL_SMTP_HOSTNAME') or define('MAIL_SMTP_HOSTNAME', getenv('MAIL_SMTP_HOSTNAME') ?: '');
 defined('MAIL_SMTP_PORT') or define('MAIL_SMTP_PORT', intval(getenv('MAIL_SMTP_PORT')) ?: 25);

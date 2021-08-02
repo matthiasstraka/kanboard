@@ -64,6 +64,7 @@ class SubtaskHelper extends Base
                 'subtask_id' => $subtask['id'],
                 'user_id'    => $userId,
                 'fragment'   => $fragment,
+                'csrf_token' => $this->token->getReusableCSRFToken(),
             );
 
             if ($subtask['status'] == 0 && $this->hasSubtaskInProgress()) {
@@ -121,7 +122,7 @@ class SubtaskHelper extends Base
         $html .= $this->helper->form->select('user_id', $users, $values, $errors, $attributes);
         $html .= '&nbsp;';
         $html .= '<small>';
-        $html .= '<a href="#" class="assign-me" data-target-id="form-user_id" data-current-id="'.$this->userSession->getId().'" title="'.t('Assign to me').'">'.t('Me').'</a>';
+        $html .= '<a href="#" class="assign-me" data-target-id="form-user_id" data-current-id="'.$this->userSession->getId().'" title="'.t('Assign to me').'" aria-label="'.t('Assign to me').'">'.t('Me').'</a>';
         $html .= '</small>';
 
         return $html;

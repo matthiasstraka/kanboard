@@ -16,8 +16,18 @@
     margin-bottom: 0
 }
 
+#board tr.board-swimlane-columns-first {
+    visibility: hidden;
+    padding: 0px
+}
+
 #board th.board-column-header {
     width: 240px
+}
+
+#board th.board-column-header-first {
+    visibility:hidden;
+    padding: 0px
 }
 
 #board td {
@@ -113,9 +123,12 @@ a.board-swimlane-toggle:focus {
 }
 
 .board-task-list {
+    min-height: 60px
+}
+
+.board-task-list-compact {
     max-height: 90vh;
     overflow-y: auto;
-    min-height: 60px
 }
 
 .board-task-list .task-board:last-child {

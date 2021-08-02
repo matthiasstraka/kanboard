@@ -12,7 +12,7 @@
 <?php else: ?>
     <table
         class="columns-table table-striped"
-        data-save-position-url="<?= $this->url->href('ColumnController', 'move', array('project_id' => $project['id'])) ?>">
+        data-save-position-url="<?= $this->url->href('ColumnController', 'move', array('project_id' => $project['id'], 'csrf_token' => $this->app->getToken()->getReusableCSRFToken())) ?>">
         <thead>
         <tr>
             <th><?= t('Column') ?></th>
@@ -26,7 +26,7 @@
         <?php foreach ($columns as $column): ?>
         <tr data-column-id="<?= $column['id'] ?>">
             <td>
-                <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change column position') ?>"></i>&nbsp;
+                <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change column position') ?>" role="button" aria-label="<?= t('Change column position') ?>"></i>&nbsp;
                 <div class="dropdown">
                     <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-cog"></i><i class="fa fa-caret-down"></i></a>
                     <ul>
