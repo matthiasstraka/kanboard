@@ -12,9 +12,6 @@ defined('DATA_DIR') or define('DATA_DIR', getenv('DATA_DIR') ?: ROOT_DIR.DIRECTO
 // Files directory (attachments)
 defined('FILES_DIR') or define('FILES_DIR', getenv('FILES_DIR') ?: DATA_DIR.DIRECTORY_SEPARATOR.'files');
 
-// Available cache drivers are "file" and "memory"
-defined('CACHE_DRIVER') or define('CACHE_DRIVER', getenv('CACHE_DRIVER') ?: 'memory');
-
 // Cache folder (file driver)
 defined('CACHE_DIR') or define('CACHE_DIR', getenv('CACHE_DIR') ?: DATA_DIR.DIRECTORY_SEPARATOR.'cache');
 
@@ -180,5 +177,8 @@ defined('SHOW_GROUP_MEMBERSHIPS_IN_USERLIST_WITH_LIMIT') or define('SHOW_GROUP_M
 // Documentation URL
 defined('DOCUMENTATION_URL_PATTERN') or define('DOCUMENTATION_URL_PATTERN', getenv('DOCUMENTATION_URL_PATTERN') ?: 'https://docs.kanboard.org/v1/user/%s');
 
-// Dashboard settings
+// Maximum number of projects displayed in the dashboard
 defined('DASHBOARD_MAX_PROJECTS') or define('DASHBOARD_MAX_PROJECTS', getenv('DASHBOARD_MAX_PROJECTS') ?: 10);
+
+// Comma separated list of trusted proxy headers, for example: "HTTP_X_REAL_IP,HTTP_X_FORWARDED_FOR"
+defined('TRUSTED_PROXY_HEADERS') or define('TRUSTED_PROXY_HEADERS', getenv('TRUSTED_PROXY_HEADERS') ?: '');

@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__.'/../Base.php';
+namespace KanboardTests\units\Helper;
 
+use KanboardTests\units\Base;
 use Kanboard\Helper\TextHelper;
 use Kanboard\Model\ProjectModel;
 use Kanboard\Model\TaskCreationModel;
@@ -155,6 +156,7 @@ class TextHelperTest extends Base
         $textHelper = new TextHelper($this->container);
         $this->assertEquals(
             'User wrote: '.PHP_EOL.'> a comment'.PHP_EOL.'> to test this'.PHP_EOL.'> feature',
-            $textHelper->reply('User', 'a comment'.PHP_EOL.'to test this'.PHP_EOL.'feature'));
+            $textHelper->reply('User', 'a comment'.PHP_EOL.'to test this'.PHP_EOL.'feature')
+        );
     }
 }

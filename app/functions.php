@@ -198,7 +198,7 @@ function build_app_version($ref, $commit_hash)
 
     if ($commit_hash !== '$Format:%H$') {
         return 'main.'.$commit_hash;
-    } else if (file_exists(__DIR__ . '/version.txt')) {
+    } elseif (file_exists(__DIR__ . '/version.txt')) {
         return rtrim(file_get_contents(__DIR__ . '/version.txt'));
     }
 
@@ -243,8 +243,10 @@ function convert_php_size_to_bytes($value)
     switch (strtoupper($unit)) {
         case 'G':
             $size *= 1024;
+            // no break
         case 'M':
             $size *= 1024;
+            // no break
         case 'K':
             $size *= 1024;
     }
@@ -292,4 +294,59 @@ function e()
 function n($value)
 {
     return Translator::getInstance()->number($value);
+}
+
+/**
+ * Sanitize a file path
+ *
+ * @param  string $path
+ * @return string|false
+ */
+function sanitize_path(string $path): string|false
+{
+    // Handle empty path
+    if (empty($path)) {
+        return false;
+    }
+
+    // Convert Windows-style backslashes to forward slashes
+    $path = str_replace('\\', '/', $path);
+
+    // If path is not absolute, make it relative to current working directory
+    if ($path[0] !== '/') {
+        $path = getcwd() . '/' . $path;
+    }
+
+    // Split path into components
+    $parts = explode('/', $path);
+    $resolved = [];
+
+    foreach ($parts as $part) {
+        // Skip empty parts (caused by multiple slashes)
+        if ($part === '' || $part === '.') {
+            continue;
+        }
+
+        // Handle parent directory
+        if ($part === '..') {
+            if (count($resolved) > 0) {
+                array_pop($resolved);
+            }
+            // If we're at root and encounter .., ignore it
+            continue;
+        }
+
+        // Add normal directory/file component
+        $resolved[] = $part;
+    }
+
+    // Reconstruct the path
+    $normalized = '/' . implode('/', $resolved);
+
+    // Handle root case
+    if ($normalized === '/') {
+        return '/';
+    }
+
+    return $normalized;
 }
